@@ -1,13 +1,14 @@
-import React, { useContext } from 'react'
-import { AuthContext } from '../contexts/auth.context'
+import React from 'react'
+import { AddImage } from './AddImage'
+import { Gallery } from './Gallery'
+
 
 export const Home = () => {
-	const { user } = useContext(AuthContext)
+
 	return (
-		<>
-			<p className='heading'>
-				Hi, {user?.name}
-			</p>
-		</>
+		<div className='container'>
+			<AddImage />
+			<Gallery />
+		</div>
 	)
 }
