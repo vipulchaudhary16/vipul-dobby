@@ -13,7 +13,7 @@ export const AddImage = () => {
     }) //data for form fields values
     const [previewImage, setPreviewImage] = useState(null); //previewImage 
     const imageRef = useRef(null); //reference to image input field
-    const navigate = useNavigate() 
+    const navigate = useNavigate()
 
     const { addImage, loadImages } = useContext(ImageContext)
     const { setIsLoading } = useContext(LoaderContext)
@@ -61,31 +61,36 @@ export const AddImage = () => {
         }
         setIsLoading(false)
         loadImages() //load images again to show newly added image
-        setData({ name: "", image: ""}) //reset form
+        setData({ name: "", image: "" }) //reset form
         imageRef.current.value = null //reset image input field
         setPreviewImage(null) //reset preview image
     }
 
     return (
-        <div className='add-image-form-container'>
-            <form onSubmit={(e) => handleSubmit(e)}>
-                <h3>Add new image</h3>
-                <div className="input-container">
-                    <label htmlFor="image">Image</label>
-                    <input type="file" name='image' id='image' ref={imageRef} onChange={(e) => handleChange(e)} required accept=".jpg, .jpeg, .png" />
-                </div>
-                <div className="input-container">
-                    <label htmlFor="name">Name</label>
-                    <input type="text" name='name' id='name' value={data.name} onChange={(e) => handleChange(e)} required />
-                </div>
-                <button type='submit' className='add-image-btn'>Add</button>
-            </form>
-            <div className="preview">
-                <h3>Preview</h3>
-                {previewImage ? <ImageCard data={previewImage} /> : <label htmlFor="image">Click here to select Image</label>
+        <>
+            <div className="heading-container">
+                <div className='first'></div>
+                <p className='heading'>Add new Image</p>
+                <div className='second'></div>
+            </div>        <div className='add-image-form-container'>
+                <form onSubmit={(e) => handleSubmit(e)}>
+                    <div className="input-container">
+                        <label htmlFor="image">Image</label>
+                        <input type="file" name='image' id='image' ref={imageRef} onChange={(e) => handleChange(e)} required accept=".jpg, .jpeg, .png" />
+                    </div>
+                    <div className="input-container">
+                        <label htmlFor="name">Name</label>
+                        <input type="text" name='name' id='name' value={data.name} onChange={(e) => handleChange(e)} required />
+                    </div>
+                    <button type='submit' className='add-image-btn'>Add</button>
+                </form>
+                <div className="preview">
+                    <h3>Preview</h3>
+                    {previewImage ? <ImageCard data={previewImage} /> : <label htmlFor="image">Click here to select Image</label>
 
-                }
+                    }
+                </div>
             </div>
-        </div>
+        </>
     )
 }

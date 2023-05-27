@@ -43,6 +43,10 @@
 
 /* Mobile CSS */
 @media screen and (max-width: 500px) {
+    .gallery-container {
+        margin-top: 1rem;
+    }
+
     .gallery {
         grid-template-columns: repeat(1, 1fr);
     }

@@ -1,5 +1,6 @@
 .container{
   padding: 1rem;
+  padding-top: 3rem;
 }
 
 /* LOGIN FORM */
@@ -46,6 +47,10 @@
 @media screen and (max-width: 500px) {
   .form-container {
     width: 95%;
+  }
+
+  .container{
+    padding-top: 1.3rem;
   }
 }
 

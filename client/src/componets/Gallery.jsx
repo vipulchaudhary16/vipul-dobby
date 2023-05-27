@@ -27,22 +27,34 @@ export const Gallery = () => {
 
     return (
         <div className='gallery-container'>
-            <h2>Your Images</h2>
-            <div className="search-container">
-                <span>Search Image </span>
-                <input type="text" onChange={(e) => filterImage(e)} placeholder='Enter name' />
-            </div>
-            <div className="gallery">
-                {
-                    res.length > 0 && res.map((data) => {
-                        return <ImageCard data={data} key={data._id} />
-                    })
-                }
+            <div className="heading-container">
+                <div className='first'></div>
+                <p className='heading'>Your Images</p>
+                <div className='second'></div>
             </div>
             {
-                res.length == 0 && <p className='notification'>
-                    No Image found
-                </p>
+                user ? <>
+                    <div className="search-container">
+                        <span>Search Image </span>
+                        <input type="text" onChange={(e) => filterImage(e)} placeholder='Enter name' />
+                    </div>
+                    <div className="gallery">
+                        {
+                            res.length > 0 && res.map((data) => {
+                                return <ImageCard data={data} key={data._id} />
+                            })
+                        }
+                    </div>
+                    {
+                        res.length == 0 && <p className='notification'>
+                            No Image found
+                        </p>
+                    }
+                </>
+                    :
+                    <p className='notification'>
+                        Please login to view your images
+                    </p>
             }
         </div>
     )
