@@ -42,3 +42,20 @@ nav .link-container{
     align-items: center;
     gap: 0.5rem;
 }
+
+/* Mobile CSS */
+@media screen and (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+        height: auto;
+        padding:  1rem 0;
+        position: relative;
+    }
+
+    nav button {
+        padding: 0.5rem 0.5rem;
+        font-size: 0.7rem;
+        font-weight: 600;
+    }
+}
