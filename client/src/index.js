@@ -12,11 +12,11 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <LoaderProvider>
-        <ImageProvider>
-          <AuthProvider>
+        <AuthProvider>
+          <ImageProvider>
             <App />
-          </AuthProvider>
-        </ImageProvider>
+          </ImageProvider>
+        </AuthProvider>
       </LoaderProvider>
     </BrowserRouter>
   </React.StrictMode>

@@ -12,9 +12,9 @@ function App() {
   const { isLoading } = useContext(LoaderContext)
   return (
     <>
-      <Navbar />
-      {isLoading && <Loader />}
-      <Routes>
+      <Navbar /> {/*navbar is always visible*/}
+      {isLoading && <Loader />} {/*if isLoading is true then show loader*/}
+      <Routes> 
         <Route exact path='/' element={<Home />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<LogIn />} />

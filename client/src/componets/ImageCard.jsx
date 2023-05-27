@@ -1,5 +1,6 @@
 import React from 'react'
 import "../styles/ImageCard.css"
+
 export const ImageCard = ({ data }) => {
     const { image, name } = data
     return (

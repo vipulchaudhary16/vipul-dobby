@@ -7,7 +7,7 @@ const morgan = require('morgan')
 const PORT = 8080
 
 dotenv.config()
-app.use(express.json({ limit: "25mb" }));
+app.use(express.json({ limit: "25mb" })); //for parsing application/json and setting limit for image size
 //for CORS requests
 app.use(cors())
 //for request monitoring

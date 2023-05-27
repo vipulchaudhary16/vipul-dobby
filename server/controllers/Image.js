@@ -4,6 +4,7 @@ const cloud_name = process.env.CLOUD_NAME;
 const api_key = process.env.API_KEY;
 const api_secret = process.env.API_SECRET;
 
+// Configure cloudinary
 cloudinary.config({
     cloud_name,
     api_key,
@@ -16,6 +17,8 @@ const opts = {
     resource_type: "auto",
 };
 
+// Upload image to cloudinary and return url
+//image is base64 encoded string
 const uploadImage = (image) => {
     return new Promise((resolve, reject) => {
         cloudinary.uploader.upload(image, opts, (error, result) => {
@@ -28,15 +31,16 @@ const uploadImage = (image) => {
     });
 };
 
+// Add image to database and return response
 const addImage = async (req, res) => {
     try {
-        const url = await uploadImage(req.body.image)
+        const url = await uploadImage(req.body.image) //upload image to cloudinary
         const imageDoc = new Image({
             name: req.body.name,
             image: url,
             userId: req.user.userId
         })
-        await imageDoc.save()
+        await imageDoc.save() //save image to database
         res.json({
             message: "Image added"
         })
@@ -47,10 +51,11 @@ const addImage = async (req, res) => {
     }
 }
 
+// Get all images of logged in user
 const getAllImages = async (req, res) => {
     try {
         const { userId } = req.user
-        const images = await Image.find({ userId }, { userId: false })
+        const images = await Image.find({ userId }, { userId: false }) //get all images of logged in user, exclude userId
         res.json(images)
     } catch (error) {
         res.status(500).json({

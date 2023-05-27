@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 
+//Context for authentication
 export const AuthContext = createContext({
     signUp: () => { },
     logIn: () => { },
@@ -12,11 +13,11 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
 
     useEffect(() => {
-        if (localStorage.getItem('token')) loadUser();
+        if (localStorage.getItem('token')) loadUser(); //if token exists, load user
     }, [])
 
-
-    const signUp = async (user) => {
+    //Sign up user
+    const signUp = async (user) => { //user is an object with email and password
         return await fetch(`${API}/api/auth/signup`, {
             method: "POST",
             headers: {
@@ -26,6 +27,7 @@ export const AuthProvider = ({ children }) => {
         });
     }
 
+    //Log in user
     const logIn = async (user) => {
         return await fetch(`${API}/api/auth/login`, {
             method: "POST",
@@ -36,6 +38,7 @@ export const AuthProvider = ({ children }) => {
         });
     }
 
+    //Load user from server
     const loadUser = async () => {
         const res = await fetch(`${API}/api/auth/get-user`, {
             method: "GET",
@@ -44,7 +47,7 @@ export const AuthProvider = ({ children }) => {
                 "token": localStorage.getItem("token")
             },
         });
-        if (!res.ok) {
+        if (!res.ok) { //if token is invalid, set user to null
             setUser(null)
             return
         }

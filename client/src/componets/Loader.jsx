@@ -1,5 +1,7 @@
 import React from 'react'
 import { Circles } from "react-loader-spinner"
+
+//React Loader Spinner
 export const Loader = () => {
     return (
         <div className='absolute-loader'>

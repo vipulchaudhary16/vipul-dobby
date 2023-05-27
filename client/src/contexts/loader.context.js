@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 
+//Context for loader
 export const LoaderContext = createContext({
     isLoading: false,
     setIsLoading: () => { }

@@ -1,14 +1,14 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { AuthContext } from '../contexts/auth.context'
 import { Link } from 'react-router-dom'
 import "../styles/Navbar.css"
 
 export const Navbar = () => {
-    const { loadUser, user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
+    //load user from local storage
     const logOut = () => {
         localStorage.clear()
-        loadUser()
         window.location.reload()
     }
 
